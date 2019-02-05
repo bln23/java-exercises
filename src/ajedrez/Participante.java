@@ -3,23 +3,23 @@ package ajedrez;
 public class Participante {
 
     private final String nombre;
-    private final String numSocio;
+    private final Jugador jugador;
     private final String direccion;
     private final Pais pais;
 
-    public Participante(String nombre, String numSocio, String direccion, Pais pais) {
+    public Participante(String nombre, Jugador jugador, String direccion, Pais pais) {
         this.nombre = nombre;
-        this.numSocio = numSocio;
+        this.jugador = jugador;
         this.direccion = direccion;
         this.pais = pais;
     }
 
-    public String getNombre() {
+	public String getNombre() {
         return nombre;
     }
 
     public String getNumSocio() {
-        return numSocio;
+        return jugador.getNumSocio();
     }
 
     public String getDireccion() {
@@ -28,5 +28,9 @@ public class Participante {
 
     public Pais getPais() {
         return pais;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
     }
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LeerParticipante {
 
-    public static Participante leer() {
+    public static Participante leer(String nivel) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nombre participante: ");
         String nombre = sc.nextLine();
@@ -26,6 +26,6 @@ public class LeerParticipante {
         System.out.println(nombrePais);
         System.out.println(numPais);
         sc.close();
-        return new Participante(nombre, numSocio, direccion, new Pais(nombrePais, numPais));
+        return new Participante(nombre, new Jugador(numSocio, nivel), direccion, new Pais(nombrePais, numPais));
     }
 }

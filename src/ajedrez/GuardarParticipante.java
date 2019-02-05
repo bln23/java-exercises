@@ -1,3 +1,4 @@
+
 package ajedrez;
 
 import java.sql.Connection;
@@ -5,13 +6,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class GuardarParticipantes {
+public class GuardarParticipante {
 
     private final String url;
     private final String user;
     private final String password;
 
-    public GuardarParticipantes(String url, String user, String password) {
+    public GuardarParticipante(String url, String user, String password) {
         this.url = url;
         this.user = user;
         this.password = password;
@@ -21,6 +22,7 @@ public class GuardarParticipantes {
         Connection conexion = DriverManager.getConnection (url, user, password);
         insertarPais(participante.getPais(), conexion);
         insertarParticipante(participante, conexion);
+        insertarJugador(participante.getJugador(), conexion);
         conexion.close();
     }
 
@@ -41,4 +43,15 @@ public class GuardarParticipantes {
         statement.execute();
         statement.close();
     }
+    
+  
+	private void insertarJugador(Jugador jugador, Connection conexion) throws SQLException {
+        PreparedStatement statement = conexion.prepareStatement("INSERT INTO jugadores VALUES (?, ?)");
+        statement.setString(1, jugador.getNumSocio());
+        statement.setString(2, jugador.getNivel());
+        statement.execute();
+        statement.close();
+    }
+    
+       
 }
